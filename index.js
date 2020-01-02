@@ -37,4 +37,11 @@ io.on("connection", function(socket) {
     //to notify the room about the joinning of new player
     io.to(data).emit("joinned");
   });
+
+  //to send the move of the user to the opponent
+  socket.on("move", function(data) {
+    console.log("moved by the user with data " + data.number + " " + data.room);
+    //to broadcast to opponent users in the room
+    socket.to(data.room).emit("play", data.number);
+  });
 });
