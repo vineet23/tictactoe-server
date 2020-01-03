@@ -44,4 +44,10 @@ io.on("connection", function(socket) {
     //to broadcast to opponent users in the room
     socket.to(data.room).emit("play", data.number);
   });
+
+  //to send the exit of the user to the opponent,data is room id
+  socket.on("exit", function(data) {
+    //to broadcast to opponent about the users exit
+    socket.to(data).emit("stop");
+  });
 });
