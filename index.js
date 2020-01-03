@@ -48,6 +48,6 @@ io.on("connection", function(socket) {
   //to send the exit of the user to the opponent,data is room id
   socket.on("exit", function(data) {
     //to broadcast to opponent about the users exit
-    socket.to(data).emit("stop");
+    socket.to(data).emit("stop", "");
   });
 });
